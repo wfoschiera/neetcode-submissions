@@ -1,0 +1,17 @@
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        res = []
+
+        for i, temperature in enumerate(temperatures):
+            count = 1
+            has_warmth = False
+            for next_temp in temperatures[i + 1 :]:
+                if next_temp > temperature:
+                    has_warmth = True
+                    res.append(count)
+                    break
+                count += 1
+
+            if not has_warmth:
+                res.append(0)
+        return res
